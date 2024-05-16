@@ -30,4 +30,13 @@ public class Controller {
         long seconds = (endTime - startTime) ;
         return new ResponseEntity<>("Duration : " + seconds + " milliseconds", HttpStatus.OK);
     }
+
+    @PostMapping("/multi")
+    public HttpEntity<String> testMulti(@RequestParam Integer total) {
+        long startTime = System.currentTimeMillis();
+        processor.testUsingMulti(total);
+        long endTime = System.currentTimeMillis();
+        long seconds = (endTime - startTime);
+        return new ResponseEntity<>("Duration : " + seconds + " milliseconds", HttpStatus.OK);
+    }
 }
